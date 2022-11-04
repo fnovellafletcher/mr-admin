@@ -33,11 +33,6 @@ const Crud = (props) => {
   const filtersEnabled =
     props.formFieldsFilter && props.formFieldsFilter.length;
 
-  const handleCustomUpdate = (onClick) => async () => {
-    await onClick();
-    await getRows(pagination, null, sorter);
-  };
-
   const actionColumn = {
     title: intl.formatMessage({
       id: "crud.table.action.column.label",
@@ -61,14 +56,6 @@ const Crud = (props) => {
             <Button
               icon={<EditOutlined />}
               onClick={(e) => openEditForm(record[idName])}
-            ></Button>
-          ) : (
-            ""
-          )}
-          {props.customUpdate ? (
-            <Button
-              icon={props.customUpdate(record).icon}
-              onClick={handleCustomUpdate(props.customUpdate(record).onClick)}
             ></Button>
           ) : (
             ""

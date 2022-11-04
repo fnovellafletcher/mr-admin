@@ -15,10 +15,6 @@ const App = ({ match }) => (
         component={asyncComponent(() => import("../pages/VideoLink"))}
       />
       <Route
-        path={`${match.url}video/comment`}
-        component={asyncComponent(() => import("../pages/VideoComment"))}
-      />
-      <Route
         path={`${match.url}video`}
         component={asyncComponent(() => import("../pages/Video"))}
       />

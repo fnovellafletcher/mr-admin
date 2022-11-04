@@ -1,14 +1,7 @@
 import { auth } from "services/firebase";
 
 class ApiService {
-  hosts = {
-    main_api: process.env.REACT_APP_API_HOST,
-    comment_api: process.env.REACT_APP_COMMENT_API_HOST,
-  };
-
-  constructor(host = "main_api") {
-    this.api_host = this.hosts[host];
-  }
+  api_host = process.env.REACT_APP_API_HOST;
 
   async get(endpoint, isBlob) {
     const requestOptions = {
