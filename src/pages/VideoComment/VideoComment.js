@@ -15,16 +15,6 @@ const VideoComment = () => {
     try {
       const videos = await VideoService.getVideos();
 
-      // const videoLinks = videos.data
-      //   .map((video) =>
-      //     (video.links || []).map((link) => ({
-      //       ...link,
-      //       videoId: video.id,
-      //       videoTitle: video.title,
-      //     }))
-      //   )
-      //   .flat();
-
       videoLinkCrud.buildFormFieldsCrud(videos.data);
       setCrudModel(videoLinkCrud);
     } catch (err) {
