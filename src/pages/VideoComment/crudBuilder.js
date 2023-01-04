@@ -29,19 +29,8 @@ const find = async ({ page, limit }) => {
     videoTitle: videos.data.find((video) => video.id === comment.entity_id)
       .title,
   }));
-  //   const comments = await CommentService.getComments();
 
   return {
-    // data: videos.data
-    //   .map((video) =>
-    //     (video.comment || []).map((comment) => ({
-    //       ...comment,
-    //       id: `${video.id}-${comment.id}`,
-    //       videoId: video.id,
-    //       videoTitle: video.title,
-    //     }))
-    //   )
-    //   .flat(),
     data: allComments,
   };
 };
@@ -72,69 +61,17 @@ const insert = async ({ _data }) => {
 
   cleanData.entity_id = videoToEdit.id;
 
-  //   videoToEdit.link = [...(videoToEdit.link || []), cleanData];
-
   return await CommentService.createComment(cleanData);
 };
 
-const update = async ({ id, _data }) => {
-  console.log(id, _data);
-  //   const info = idSplitter(id);
-
-  //   const videoToEditResponse = await VideoService.getVideoById(info.videoId);
-  //   const videoToEdit = videoToEditResponse.data;
-  //   const indexOfEditedLink = videoToEdit.link.findIndex(
-  //     (link) => link.href === info.href
-  //   );
-
-  //   const cleanData = { ..._data };
-  //   delete cleanData.id;
-
-  //   videoToEdit.link[indexOfEditedLink] = cleanData;
-
-  return await CommentService.updateComment(id, _data);
-};
-
 const toggleCommentApproval = async ({ id, _data }) => {
-  console.log(id, _data);
-  //   const info = idSplitter(id);
-
-  //   const videoToEditResponse = await VideoService.getVideoById(info.videoId);
-  //   const videoToEdit = videoToEditResponse.data;
-  //   const indexOfEditedLink = videoToEdit.link.findIndex(
-  //     (link) => link.href === info.href
-  //   );
-
-  //   const cleanData = { ..._data };
-  //   delete cleanData.id;
-
-  //   videoToEdit.link[indexOfEditedLink] = cleanData;
-
   return await CommentService.updateCommentStatus(id, _data);
 };
 
 const remove = async ({ id }) => {
-  //   const info = idSplitter(id);
-
-  //   const videoToEditResponse = await VideoService.getVideoById(info.videoId);
-  //   const videoToEdit = videoToEditResponse.data;
-
-  //   videoToEdit.link = videoToEdit.link.filter((link) => link.href !== info.href);
-
-  //   return await VideoService.updateVideo(videoToEdit.id, videoToEdit);
-
   return await CommentService.deleteComment(id);
-  console.log(id);
-  // return await VideoService.deleteVideo(id);
 };
 
-const idSplitter = (id) => {
-  const split = id.split("-");
-  return {
-    videoId: split[0],
-    commentId: split[1],
-  };
-};
 const formFieldsCrudBuilder = (videosCatalog) => [
   {
     name: "id",
@@ -166,20 +103,8 @@ const formFieldsCrudBuilder = (videosCatalog) => [
       mode: "default",
     },
   },
-  //   {
-  //     label: "forms.approved",
-  //     // validation: null, // validation function
-  //     name: "approved",
-  //     type: "switch",
-  //     // rules: [{ required: true, message: "Cannot be empty!" }],
-  //     props: {
-  //       type: "switch",
-  //       placeholder: "forms.approved",
-  //     },
-  //   },
   {
     label: "forms.nick",
-    // validation: null, // validation function
     name: "nick",
     type: "input",
     rules: [{ required: true, message: "Cannot be empty!" }],
@@ -191,7 +116,6 @@ const formFieldsCrudBuilder = (videosCatalog) => [
   },
   {
     label: "forms.comment",
-    // validation: null, // validation function
     name: "comment",
     type: "input",
     rules: [{ required: true, message: "Cannot be empty!" }],
@@ -204,11 +128,6 @@ const formFieldsCrudBuilder = (videosCatalog) => [
 ];
 
 const tableColumns = [
-  //   {
-  //     title: "forms.id",
-  //     dataIndex: "id",
-  //     render: (id, record) => id,
-  //   },
   {
     title: "forms.video",
     dataIndex: "videoTitle",

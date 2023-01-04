@@ -11,11 +11,9 @@ import {
   UpOutlined,
 } from "@ant-design/icons";
 
+// props:
+// columns, formFieldsFilter, formFieldsCrud, find, findOne, update, insert, delete, tableColumns, textKeys, idName
 const Crud = (props) => {
-  // props:
-  // columns, formFieldsFilter, formFieldsCrud, find, findOne, update, insert, delete, tableColumns, textKeys, idName
-  console.log(props.customUpdate);
-
   const { createRecordTextKey, updateRecordTextKey } = props.textKeys;
   const showTable = props.showTable != undefined ? props.showTable : true;
   const intl = useIntl();

@@ -42,26 +42,13 @@ export default class CommentApiService extends ApiService {
   }
 
   async createComment(data) {
-    //   const customHeader =  {
-    //     "Content-Type": "multipart/form-data",
-    //   }
     return await this.post(this.commentEndpoint, data);
   }
 
   async updateCommentStatus(commentId, data) {
-    //   const customHeader =  {
-    //     "Content-Type": "multipart/form-data",
-    //   }
     const url = this.buildCommentApprovalUrl(commentId);
     return await this.post(url, data);
   }
-
-  //   async updateComment(commentId, formData) {
-  //     console.log(commentId, formData);
-  //     const url = this.buildCommentUrl(commentId);
-
-  //     return await this.put(url, formData);
-  //   }
 
   async deleteComment(commentId) {
     const url = this.buildCommentUrl(commentId);
