@@ -1,6 +1,5 @@
 import { CheckOutlined, CloseOutlined, UsbFilled } from "@ant-design/icons";
 import { Button, Progress, Row, Col, Typography } from "antd";
-import Text from "antd/lib/typography/Text";
 import { CrudBuilder } from "components/custom/Crud/CrudBuilder";
 import VideoService from "services/video";
 import CommentService from "services/comment";
