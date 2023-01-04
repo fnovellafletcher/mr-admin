@@ -32,10 +32,13 @@ const Crud = (props) => {
   const filtersEnabled =
     props.formFieldsFilter && props.formFieldsFilter.length;
 
-  const handleCustomUpdate = (onClick) => async () => {
-    await onClick();
-    await getRows(pagination, null, sorter);
-  };
+  const handleCustomUpdate = useCallback(
+    (onClick) => async () => {
+      await onClick();
+      await getRows(pagination, null, sorter);
+    },
+    []
+  );
 
   const actionColumn = {
     title: intl.formatMessage({
