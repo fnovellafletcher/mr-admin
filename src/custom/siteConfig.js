@@ -54,6 +54,13 @@ const siteConfig = {
         icon: <VideoCameraOutlined />,
       },
       {
+        path: "/video/comment/",
+        key: "video.comment",
+        code: "sidebar.video.comments",
+        title: "Video comments",
+        icon: <VideoCameraOutlined />,
+      },
+      {
         path: "/links/",
         key: "links",
         code: "sidebar.links",
