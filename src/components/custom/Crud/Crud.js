@@ -11,10 +11,9 @@ import {
   UpOutlined,
 } from "@ant-design/icons";
 
+// props:
+// columns, formFieldsFilter, formFieldsCrud, find, findOne, update, insert, delete, tableColumns, textKeys, idName
 const Crud = (props) => {
-  // props:
-  // columns, formFieldsFilter, formFieldsCrud, find, findOne, update, insert, delete, tableColumns, textKeys, idName
-
   const { createRecordTextKey, updateRecordTextKey } = props.textKeys;
   const showTable = props.showTable != undefined ? props.showTable : true;
   const intl = useIntl();
@@ -32,6 +31,11 @@ const Crud = (props) => {
   const idName = props.idName || "id";
   const filtersEnabled =
     props.formFieldsFilter && props.formFieldsFilter.length;
+
+  const handleCustomUpdate = (onClick) => async () => {
+    await onClick();
+    await getRows(pagination, null, sorter);
+  };
 
   const actionColumn = {
     title: intl.formatMessage({
@@ -56,6 +60,14 @@ const Crud = (props) => {
             <Button
               icon={<EditOutlined />}
               onClick={(e) => openEditForm(record[idName])}
+            ></Button>
+          ) : (
+            ""
+          )}
+          {props.customUpdate ? (
+            <Button
+              icon={props.customUpdate(record).icon}
+              onClick={handleCustomUpdate(props.customUpdate(record).onClick)}
             ></Button>
           ) : (
             ""
