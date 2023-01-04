@@ -37,7 +37,7 @@ const Crud = (props) => {
       await onClick();
       await getRows(pagination, null, sorter);
     },
-    []
+    [onClick, getRows, pagination, sorter]
   );
 
   const actionColumn = {
